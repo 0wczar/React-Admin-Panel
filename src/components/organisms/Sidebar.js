@@ -17,7 +17,6 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PolymerRoundedIcon from '@material-ui/icons/PolymerRounded';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';

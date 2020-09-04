@@ -1,11 +1,8 @@
-import React, { Fragment } from "react";
+import React  from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { routes } from "routes/index.js";
-import Profile from "components/organisms/Profile.js";
 import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
-import Sidebar from "components/organisms/Sidebar.js";
-import Billings from "components/organisms/Billings.js";
 
 function CollapseSidebarUserItem() {
 
