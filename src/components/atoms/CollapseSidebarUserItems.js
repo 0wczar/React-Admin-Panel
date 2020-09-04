@@ -1,66 +1,66 @@
-import React from "react";
-import List from "@material-ui/core/List";
-import {ListItem} from "@material-ui/core";
-import {ListItemIcon} from "@material-ui/core";
-import { Link} from "react-router-dom";
-import { makeStyles} from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-    userText: {
-        textDecoration: 'none',
-        color: 'gray',
-        fontFamily: 'Arial',
-        fontSize: '15px',
-    },
-}));
-
+import React, { Fragment } from "react";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import { routes } from "routes/index.js";
+import Profile from "components/organisms/Profile.js";
+import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
+import Sidebar from "components/organisms/Sidebar.js";
+import Billings from "components/organisms/Billings.js";
 
 function CollapseSidebarUserItem() {
-    const classes = useStyles();
 
-    return(
-        <div>
-        <List>
-              <ListItem button>
-                <ListItemIcon />
-                <Link 
-                  to='/profile' 
-                  className={classes.userText}>
-                  Profile
-                </Link>
-              </ListItem>
+  return (
+    <div className="App">
+    <BrowserRouter>
+      <Route
+        path="/"
+        render={(history) => (
+            <Tabs
+            orientation="vertical"
+            variant="scrollable"
+              value={
+                history.location.pathname !== "/"
+                  ? history.location.pathname
+                  : false
+              }
+            >
+              {console.log(history.location.pathname)}
+              <Tab
+                value={routes.profile}
+                label="Profile"
+                component={Link}
+                to={routes.profile}
+              />
+               <Tab
+                value={routes.settings}
+                label="Account Settings"
+                component={Link}
+                to={routes.settings}
+              />
+               <Tab
+                value={routes.password}
+                label="Password"
+                component={Link}
+                to={routes.password}
+              />
+              <Tab
+                value={routes.billings}
+                label="Billing"
+                component={Link}
+                to={routes.billings}
+              />
+            </Tabs>
+        )}
+      />
 
-              <ListItem button>
-                <ListItemIcon />
-                <Link 
-                  to='/settings' 
-                  className={classes.userText}>
-                  Account Settings
-                </Link>
-              </ListItem>
-
-              <ListItem button>
-                <ListItemIcon />
-                <Link 
-                  to='/password'
-                  className={classes.userText}>
-                  Password
-                </Link>
-              </ListItem>
-
-              <ListItem button>
-                <ListItemIcon />
-                <Link 
-                  to='/billings' 
-                  className={classes.userText}>
-                  Billing
-                </Link>
-              </ListItem>
-            </List>
-    </div>
-    );
+    
+      <Switch>
+        <Route path="/profile" />
+        <Route path="/billings"/>
+      </Switch>
+    </BrowserRouter>
+  </div>
+  );
 }
 
 export default CollapseSidebarUserItem;
-
-

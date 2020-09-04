@@ -12,6 +12,11 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Container from '@material-ui/core/Container';
 import Divider from '@material-ui/core/Divider';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItem from '@material-ui/core/ListItem';
+import Chip from '@material-ui/core/Chip';
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 
 import PaymentHistory from 'components/molecules/PaymentHistory.js';
 import CollapseSidebarUserItems from 'components/atoms/CollapseSidebarUserItems.js';
@@ -60,61 +65,49 @@ const useStyles = makeStyles((theme) => ({
 function Billings() {
   const classes = useStyles();
 
+  const handleClick = event => event.preventDefault();
+
+
   return (
     <Container 
       maxWidth='lg'>
       <form>
-      <div style={{
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        marginBottom: '25px',
-        marginTop: '50px',
-        color: 'black'
-      }}>
-          <Avatar 
-            alt="Remy Sharp"
-            src="/static/images/avatar/1.jpg" 
-          />
-          <List>
-            <ListItemText 
-              primary="John Doe" 
-              style={{
-                marginLeft: '15px', 
-                marginBottom: '-25px'
-              }}>
-            </ListItemText>
-            <Button className={classes.proVersionMember} style={{marginLeft: '112px', padding: '2px'}}>PRO</Button>
-            <Breadcrumbs 
-              aria-label="breadcrumb" 
-              style={{
-                marginLeft: "200px",
-                marginTop: "-24px"
-              }}>
-                <Link 
-                  color="inherit" 
-                  href="/profile"
-                >
-                  <Typography 
-                    color="textPrimary"
-                    > / Billing
-                  </Typography>
-                </Link>
-            </Breadcrumbs>
-            <ListSubheader style={{
-              marginTop: '-8px'
-              }}>
-                Manage billing information and view receipts
-            </ListSubheader>
-          </List>
+      <div style={{position: 'absolute', width: '806px', height: '58px', left: '459px', top: '67px'}}>
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          </Avatar>
+        </ListItemAvatar>
+        <div style={{display: 'flex', flexDirection: 'row'}}>
+          <ListItemText primary="John Doe" secondary="Manage billing information and view receipts" />
+          <Chip size="small" label="PRO" style={{background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #2196F3', marginTop: '4px', color: '#2196F3', marginRight: '10px', marginLeft: '-200px'}}/>
+          <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '5px'}}>
+            <Link
+                onClick={handleClick}
+                style={{color: 'black', textDecoration: 'none'}}
+              >
+              / Billing
+            </Link>
+          </Breadcrumbs>
         </div>
-
-      <Box width="54%" style={{marginLeft: "600px"}}>
+      </ListItem>
+      </div>
+      
+      <div style={{position: 'absolute', width: '1156px', height: '58px', left: '-49px', top: '167px'}}>
+      <Box width="50%" style={{marginLeft: '720px'}}>
       <Paper variant="outlined" style={{padding: "60px"}}>
           <ListItemText>Your Plan</ListItemText>
-            <ListSubheader style={{float: 'right', marginTop: '-40px'}}>
+            <ListSubheader style={{marginTop: '-40px', marginLeft: '310px'}}>
               <Button className={classes.proVersionMember}>PRO</Button>
             </ListSubheader>
+            <div style={{width: '390px', marginTop: '12px'}}>
+            <LinearProgress variant="determinate" style={{background: '#2196F3', opacity: '0.9'}}/>
+              <div style={{display: 'flex', flexDirection: 'row'}}>
+                <ListItemText secondary="Minutes used this billing cycle"/>
+                <ListItemText primary="38.9/2000.0" style={{marginRight: '-115px'}}/>
+              </div>
+          </div>
           <Button variant="outlined" style={{marginTop: '20px'}}>Change</Button>
           <Button style={{marginTop: '20px', marginLeft: '20px'}}>Cancel Subscription</Button>
           <Divider style={{marginTop: '40px'}}/>
@@ -122,16 +115,16 @@ function Billings() {
           <ListSubheader style={{marginLeft: '-15px'}}>You can use a Credit Card or a bank Account.</ListSubheader>
           <ListSubheader style={{marginLeft: '-15px', fontSize: '13px'}}>Payment Method on file</ListSubheader>
           <ListItemText>Visa Ending in 0218 expiring 4/2020</ListItemText>
-          <Button variant="outlined" style={{marginTop: '20px'}}><Link to='/card' className={classes.text}>Edit</Link></Button>
+          <Button variant="outlined" style={{marginTop: '20px'}} href="/card">Edit</Button>
           <Button style={{marginTop: '20px', marginLeft: '20px'}}>Remove</Button>
       </Paper>
       </Box>
       
       <PaymentHistory/>
-
+      </div>
     </form>
-    <div style={{marginLeft: '400px', marginTop: '-1140px', width: '200px'}}>
-         <CollapseSidebarUserItems/>
+    <div style={{position: 'static', width: '202px', height: '48px', left: '0', right: '0', marginLeft: '411px', marginTop: '159px'}}>
+        <CollapseSidebarUserItems />
     </div>
 
     </Container>

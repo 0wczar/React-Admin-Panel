@@ -17,6 +17,17 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import Select from '@material-ui/core/Select';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Typography from '@material-ui/core/Typography';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,18 +56,27 @@ const useStyles = makeStyles((theme) => ({
     color: '#0B79D0',
     borderRadius: '55px',
     fontSize: '12px',
+    padding: '0px',
+    marginLeft: '-10px',
+    marginRight: '-10px'
   },
   premiumVersionMember: {
     background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #4CAF50',
     color: '#4CAF50',
     borderRadius: '55px',
     fontSize: '12px',
+    padding: '0px',
+    marginLeft: '-10px',
+    marginRight: '-10px'
   },
   basicVersionMember: {
     background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #F44336;',
     color: '#F44336',
     borderRadius: '55px',
     fontSize: '12px',
+    padding: '0px',
+    marginLeft: '-10px',
+    marginRight: '-10px'
   }
 }));
 
@@ -68,169 +88,50 @@ function PaymentHistory() {
   const [rows, setRows] = React.useState('10');
   const handleRowsChange = event => setRows(event.target.value);
 
+  function createData( status, date, amount, offer, PaymentMethod, receipt) {
+    return {status, date, amount, offer, PaymentMethod, receipt};
+  }
+  
+  const rowss = [
+    createData(<DoneIcon style={{ color: '#4CAF50' }}/>,'Thu, 12 July, 2018', '$204.96', <Button Button className={classes.proVersionMember}>PRO</Button>, 'Visa 4**** **** **** 9221' , <ReceiptIcon/>),
+    createData(<CloseIcon style={{ color: 'red' }}/>, 'Sat, 12 July, 2018', '$204.96', <Button Button className={classes.basicVersionMember}>Basic</Button>, 'Visa 4**** **** **** 9221' ),
+    createData(<DoneIcon style={{ color: '#4CAF50' }}/>, 'Thu, 12 July, 2018', '$204.96', <Button Button className={classes.premiumVersionMember}>Premium</Button>, 'Visa 4**** **** **** 9221', <ReceiptIcon/> ),
+    createData(<DoneIcon style={{ color: '#4CAF50' }}/>, 'Sat, 12 July, 2018', '$204.96', <Button Button className={classes.proVersionMember}>PRO</Button>, 'Visa 4**** **** **** 9221', <ReceiptIcon/> ),
+
+  ];
+
   return (
-      <Box width="54%" style={{marginLeft: "600px", marginTop:'40px'}}>
-      <Paper variant="outlined" style={{padding: "60px"}}>
-        <ListItemText>Payment History</ListItemText>
-        <ListSubheader style={{marginLeft: '-15px', marginTop:'-5px'}}>See all invoices</ListSubheader>
-        <GetAppIcon color="disabled" style={{float: 'right', marginTop: '-69px'}}/>
-        <List className={classes.inlineItemsList}>
-        <List className={classes.blockList}>
-              <ListItemText style={{marginBottom: '20px', marginLeft: '90px'}}>Date</ListItemText>
-              <Divider/>
-                <ListItem>
-                    <ListItemIcon>
-                      <DoneIcon style={{color: 'green'}} className={classes.styleIcons}/>
-                    </ListItemIcon>
-                    <ListSubheader style={{marginLeft: "-40px"}}>
-                        Thu, 12 July, 2018
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListItemIcon>
-                      <CloseIcon color="secondary" className={classes.styleIcons}/>
-                    </ListItemIcon>
-                    <ListSubheader style={{marginLeft: "-40px"}}>
-                        Sat, 12 July, 2018
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListItemIcon>
-                      <DoneIcon style={{color: 'green'}} className={classes.styleIcons}/>
-                    </ListItemIcon>
-                    <ListSubheader style={{marginLeft: "-40px"}}>
-                        Thu, 12 July, 2018
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListItemIcon>
-                      <DoneIcon style={{color: 'green'}} className={classes.styleIcons}/>
-                    </ListItemIcon>
-                    <ListSubheader style={{marginLeft: "-40px"}}>
-                        Sat, 12 July, 2018
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-        </List>
-        <List className={classes.inlineItemsList}>
-          <List clasName={classes.blockList} style={{marginLeft: '-45px'}}>
-          <ListItemText style={{marginBottom: '12px', marginLeft: '30px'}}>Amount</ListItemText>
-              <Divider/>
-              <ListItem>
-                    <ListSubheader style={{color: 'black'}}>
-                        $204.96
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListSubheader>
-                        $408.62
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListSubheader style={{color: 'black'}}>
-                        $260.04
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-                <ListItem>
-                    <ListSubheader style={{color: 'black'}}>
-                        $699.45
-                    </ListSubheader>
-                </ListItem>
-                <Divider/>
-          </List>
-        </List>
-
-        <List className={classes.inlineItemsList}>
-          <List clasName={classes.blockList} style={{marginLeft: '-45px'}}>
-          <ListItemText style={{marginBottom: '12px', marginLeft: '30px'}}>Plan</ListItemText>
-              <Divider/>
-              <ListItem>
-                <ListSubheader>
-                  <Button className={classes.proVersionMember}>PRO</Button>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                  <Button className={classes.basicVersionMember}>Basic</Button>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                  <Button className={classes.premiumVersionMember}>PREMIUM</Button>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                  <Button 
-                  className={classes.proVersionMember}>PRO</Button>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-          </List>
-        </List>
-        <List className={classes.inlineItemsList}>
-          <List clasName={classes.blockList} style={{marginLeft: '-45px'}}>
-          <ListItemText style={{marginBottom: '12px', marginLeft: '30px'}}>Payment Method</ListItemText>
-              <Divider/>
-              <ListItem>
-                <ListSubheader>Visa 4*** *** *** 9221</ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-                <ListSubheader>Bank account 3**** 9221</ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-                <ListSubheader>Visa 4*** *** *** 9221</ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-                <ListSubheader>Bank account 3**** 9221</ListSubheader>
-              </ListItem>
-                <Divider/>
-          </List>
-        </List>
-
-        <List className={classes.inlineItemsList}>
-          <List clasName={classes.blockList} style={{marginLeft: '-15px', marginTop: '39px',marginRight: '-60px'}}>
-              <Divider/>
-              <ListItem>
-                <ListSubheader>
-                    <ReceiptIcon/>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                    <ReceiptIcon/>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                    <ReceiptIcon/>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-              <ListItem>
-              <ListSubheader>
-                    <ReceiptIcon/>
-                </ListSubheader>
-              </ListItem>
-                <Divider/>
-          </List>
-        </List>
-
-          <List className={classes.inlineItemsList} style={{marginLeft: '160px'}}>
+      <div style={{position: 'absolute', width: '1156px', height: '58px', left: '-49px', top: '581px'}}>
+        <Box width="50%" style={{marginLeft: '770px'}}>
+        <Paper variant="outlined">
+          <ListItemText primary="Payment History" secondary="See all invoices" style={{marginTop: '14px', marginLeft: '16px'}}/>
+          <ListItemIcon style={{float: 'right', marginTop: '-40px'}}><GetAppIcon/></ListItemIcon>
+          <TableContainer component={Paper}>
+      <Table size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell></TableCell>
+            <TableCell>Date</TableCell>
+            <TableCell>Amount</TableCell>
+            <TableCell>Plan</TableCell>
+            <TableCell>Payment Method</TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rowss.map((rowss) => (
+            <TableRow >
+              <TableCell>{rowss.status}</TableCell>
+              <TableCell>{rowss.date}</TableCell>
+              <TableCell>{rowss.amount}</TableCell>
+              <TableCell>{rowss.offer}</TableCell>
+              <TableCell>{rowss.PaymentMethod}</TableCell>
+              <TableCell>{rowss.receipt}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      <List className={classes.inlineItemsList} style={{marginLeft: '160px'}}>
             <ListSubheader>Rows per page</ListSubheader>
             <Select
               labelId="demo-simple-select-label"
@@ -250,9 +151,11 @@ function PaymentHistory() {
             </List>
           </List>
 
-        </List>
-      </Paper>
-      </Box>
+    </TableContainer>
+    
+        </Paper>
+        </Box>
+      </div>
   );
 }
 

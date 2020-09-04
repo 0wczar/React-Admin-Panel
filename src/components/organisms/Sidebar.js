@@ -18,6 +18,10 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PolymerRoundedIcon from '@material-ui/icons/PolymerRounded';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
+import SaveAltRoundedIcon from '@material-ui/icons/SaveAltRounded';
 
 import CollapseSidebarUserItem from "components/atoms/CollapseSidebarUserItems.js";
 
@@ -75,11 +79,13 @@ function ResponsiveDrawer(props) {
     <div>
         <List className={classes.nameOfAdminPanel}>
           <ListItem>
-            <ListItemIcon>
-              <ExitToAppIcon />
-            </ListItemIcon>
+            <ListItemAvatar>
+              <Avatar style={{background: 'linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), #2196F3'}}>
+                <PolymerRoundedIcon style={{color: '#2196F3'}}/>
+              </Avatar>
+            </ListItemAvatar>
             <ListItemText primary="SIMPLE" secondary="Form Dashboard" />
-          </ListItem>
+        </ListItem>
         </List>
         <div className={classes.toolbar} />
         <List>
@@ -122,7 +128,7 @@ function ResponsiveDrawer(props) {
               )}
               {index === 5 && (
                 <ListItemIcon>
-                  <CalendarTodayIcon />
+                  <SaveAltRoundedIcon />
                 </ListItemIcon>
               )}
               <ListItemText primary={text} />
@@ -150,7 +156,7 @@ function ResponsiveDrawer(props) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <ExitToAppIcon />
+              <PowerSettingsNewRoundedIcon />
             </ListItemIcon>
             <ListItemText primary="Logout" />
           </ListItem>
