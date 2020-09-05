@@ -101,6 +101,7 @@ function CardBilling() {
             <Link
                 onClick={handleClick}
                 style={{color: '#2196F3', textDecoration: 'none'}}
+                to="/billings"
               >
               / Billing
             </Link>
@@ -268,7 +269,7 @@ function CardBilling() {
       </Box>
       </div>
       </form>
-      <div style={{position: 'static', width: '202px', height: '48px', left: '0', right: '0', marginLeft: '411px', marginTop: '159px'}}>
+      <div style={{position: 'absolute', width: '202px', height: '48px', left: '471px', top: '167px'}}>
         <CollapseSidebarUserItems />
       </div>
 

@@ -7,7 +7,7 @@ import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 function CollapseSidebarUserItem() {
 
   return (
-    <div className="App">
+    <div>
     <BrowserRouter>
       <Route
         path="/"
@@ -16,12 +16,11 @@ function CollapseSidebarUserItem() {
             orientation="vertical"
             variant="scrollable"
               value={
-                history.location.pathname !== "/"
+                history.location.pathname !== "/card" &&  "/"
                   ? history.location.pathname
                   : false
               }
             >
-              {console.log(history.location.pathname)}
               <Tab
                 value={routes.profile}
                 label="Profile"
@@ -54,6 +53,9 @@ function CollapseSidebarUserItem() {
       <Switch>
         <Route path="/profile" />
         <Route path="/billings"/>
+        <Route path="/password"/>
+        <Route path="/settings"/>
+        <Route path="/card"/>
       </Switch>
     </BrowserRouter>
   </div>
