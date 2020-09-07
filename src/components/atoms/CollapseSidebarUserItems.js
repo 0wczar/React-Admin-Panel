@@ -32,6 +32,11 @@ function CollapseSidebarUserItem() {
                 component={Link}
                 to={routes.billings}
               />
+              <Tab
+                label="Card"
+                component={Link}
+                to={routes.card}
+              />
             </Tabs>
   </div>
   );
